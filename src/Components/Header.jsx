@@ -4,14 +4,12 @@ import SearchBlock from "./SearchBlock";
 
 const Header = () => {
   return (
-    <>
-      <HeaderContainer>
-        <LogoContainer>
-          <img src="/images/logo.png" alt="logo" />
-        </LogoContainer>
-        <SearchBlock />
-      </HeaderContainer>
-    </>
+    <HeaderContainer>
+      <LogoContainer>
+        <img src="/images/logo.png" alt="logo" />
+      </LogoContainer>
+      <SearchBlock />
+    </HeaderContainer>
   );
 };
 

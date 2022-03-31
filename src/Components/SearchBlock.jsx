@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { IconContext } from "react-icons";
 import { AiOutlineSearch } from "react-icons/ai";
+import SearchModal from "./SearchModal";
 
 const SearchBlock = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <SearchContainer>
-      <SearchInputs placeholder="Add Location" readOnly />
-      <SearchInputs placeholder="Add Guests" readOnly />
-      <IconContext.Provider
-        value={{ color: "var(--clr-primary)", size: "2rem" }}
-      >
-        <AiOutlineSearch className="search-icon" />
-      </IconContext.Provider>
-    </SearchContainer>
+    <>
+      <SearchContainer onClick={() => setIsModalOpen(true)}>
+        <SearchInputs placeholder="Add Location" readOnly />
+        <SearchInputs placeholder="Add Guests" readOnly />
+        <AiOutlineSearch
+          className="search-icon"
+          color="var(--clr-primary)"
+          size="20px"
+        />
+      </SearchContainer>
+      <SearchModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+    </>
   );
 };
 
@@ -29,6 +33,7 @@ const SearchContainer = styled.div`
   margin-block: 4rem;
   width: min(100%, 35rem);
   margin-inline: auto;
+  cursor: pointer;
 
   @media (min-width: 40em) {
     margin-block: revert;
@@ -38,7 +43,6 @@ const SearchContainer = styled.div`
   .search-icon {
     margin-inline-start: 1.5rem;
     margin-inline-end: 2.3rem;
-    cursor: pointer;
   }
 `;
 
