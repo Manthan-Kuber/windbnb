@@ -26,9 +26,19 @@ const SearchContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr auto;
   place-items: center;
+  margin-block: 4rem;
+  width: min(100%, 35rem);
+  margin-inline: auto;
+
+  @media (min-width: 40em) {
+    margin-block: revert;
+    margin-inline: revert;
+  }
+
   .search-icon {
     margin-inline-start: 1.5rem;
     margin-inline-end: 2.3rem;
+    cursor: pointer;
   }
 `;
 
@@ -38,6 +48,7 @@ const SearchInputs = styled.input`
   padding-block: 1rem;
   text-align: center;
   cursor: pointer;
+  width: 100%;
   &:nth-child(2) {
     border-right: 1px solid #f2f2f2;
     border-left: 1px solid #f2f2f2;

@@ -18,12 +18,10 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  img {
-    width: 100%;
+  @media (min-width: 40em) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 `;
 
