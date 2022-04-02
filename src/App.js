@@ -12,6 +12,7 @@ function App() {
           
         </MainContainer>
       </MainWrapper>
+      
     </>
   );
 }
@@ -22,7 +23,7 @@ const MainWrapper = styled.div`
   padding-inline: 1.5rem;
   padding-block: 2rem;
 
-  @media (min-width: 40em) {
+  @media (min-width: 45em) {
     padding-inline: 9rem;
     padding-block: 5rem;
   }

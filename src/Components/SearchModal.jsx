@@ -1,21 +1,24 @@
 import React from "react";
-import { Modal } from "react-responsive-modal";
+import ReactDOM from "react-dom";
+import {
+  ModalWrapper,
+  ModalSearchContainer,
+  ModalSearchInputs,
+} from "./Header.styles";
 
 const SearchModal = ({ isModalOpen, setIsModalOpen }) => {
-  return (
-    <>
-      <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h2>Simple centered modal</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
-          hendrerit risus, sed porttitor quam.
-        </p>
-      </Modal>
-    </>
+  return ReactDOM.createPortal(
+    <ModalWrapper>
+      <ModalSearchContainer>
+        <div>
+          <label>Location</label>
+          <ModalSearchInputs />
+        </div>
+        <ModalSearchInputs />
+      </ModalSearchContainer>
+    </ModalWrapper>,
+    document.getElementById("portal-root")
   );
 };
 
 export default SearchModal;
-
-
