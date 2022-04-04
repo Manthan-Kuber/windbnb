@@ -156,7 +156,7 @@ export const ButtonContainer = styled.button`
   padding: 1.5rem 2.7rem;
   margin-top: 1.6rem;
   font: 700 1.4rem "Mulish", sans-serif;
-  cursor:pointer;
+  cursor: pointer;
 
   @media (min-width: 40em) {
     margin-top: revert;
@@ -167,7 +167,6 @@ export const ButtonContainer = styled.button`
 export const ModalContentWrapper = styled.div`
   @media (min-width: 40em) {
     display: flex;
-    justify-content: center;
     align-items: center;
     margin-top: 1.6rem;
     box-shadow: 0px 1px 6px 0px #0000001a;
@@ -175,5 +174,28 @@ export const ModalContentWrapper = styled.div`
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
+  }
+`;
+
+export const ResultsWrapper = styled.div`
+  display: grid;
+  width: fit-content;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const LocationResults = styled.div`
+  border: 1px solid red;
+  width: 300px;
+  height: 200px;
+  text-align: center;
+  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar{
+    display: none;
   }
 `;
