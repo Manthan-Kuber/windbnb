@@ -50,18 +50,6 @@ export const SearchInputs = styled.input`
   }
 `;
 
-// export const ModalSearchContainer = styled(SearchContainer)`
-//   margin-left: auto;
-//   margin-right: auto;
-//   background-color: white;
-// `;
-
-// export const ModalSearchInputs = styled(SearchInputs)`
-//   text-align: left;
-//   cursor: auto;
-//   padding-left: 1rem;
-// `;
-
 export const ModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 999;
@@ -91,6 +79,7 @@ export const InputWrapper = styled.div`
   margin-right: auto;
   padding: 1.2rem;
   width: 100%;
+  position: relative;
 
   @media (min-width: 40em) {
     &:focus-within {
@@ -171,31 +160,66 @@ export const ModalContentWrapper = styled.div`
     margin-top: 1.6rem;
     box-shadow: 0px 1px 6px 0px #0000001a;
     border-radius: 16px;
-    max-width: 90%;
+    max-width: 55em;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 182px;
   }
 `;
 
-export const ResultsWrapper = styled.div`
-  display: grid;
-  width: fit-content;
-  grid-template-columns: repeat(3, 1fr);
-  margin-left: auto;
-  margin-right: auto;
-`;
-
-export const LocationResults = styled.div`
-  border: 1px solid red;
-  width: 300px;
+export const ResultsContainer = styled.div`
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.5rem);
+  background: white;
   height: 200px;
-  text-align: center;
+  width: 250px;
   overflow: hidden;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-
-  &::-webkit-scrollbar{
+  font: 400 1.4rem "Mulish", sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  &::-webkit-scrollbar {
     display: none;
   }
+`;
+
+export const ResultRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  width: 100%;
+  padding: 1rem;
+  &:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+`;
+
+export const CounterWrapper = styled.div`
+  label {
+    font: 400 1.4rem "Mulish", sans-serif;
+    color: lightgrey;
+    text-transform: capitalize;
+  }
+`;
+
+export const CounterInput = styled.input`
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+`;
+
+export const CounterButton = styled.button`
+  padding: 0.5rem;
+  width: 3rem;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  background: var(--clr-primary);
+  border-radius:6px;
 `;
