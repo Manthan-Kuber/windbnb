@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ModalInput, InputWrapper } from "./Header.styles";
 import { ResultsContainer, ResultRow } from "./Header.styles";
 import Data from "../stays.json";
@@ -18,17 +18,40 @@ const InputSearchBar = (props) => {
     value,
     locationFocus,
     guestsFocus,
-    readOnly
+    readOnly,
   } = props;
   const searchContext = useContext(SearchContext);
-  const {  width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
+  const [counters, setCounters] = useState({ counter1: 0, counter2: 0 });
+
+  const handleIncrement1 = () => {
+    setCounters({ ...counters, counter1: counters.counter1 + 1 });
+    searchContext.dispatch({ type: "incGuests" });
+  };
+
+  const handleDecrement1 = () => {
+    if(counters.counter1 === 0 ) return counters.counter1
+    setCounters({ ...counters, counter1: counters.counter1 - 1 });
+    searchContext.dispatch({ type: "decGuests" });
+  };
+
+  const handleIncrement2 = () => {
+    setCounters({ ...counters, counter2: counters.counter2 + 1 });
+    searchContext.dispatch({ type: "incGuests" });
+  };
+
+  const handleDecrement2 = () => {
+    if(counters.counter2 === 0 ) return counters.counter2
+    setCounters({ ...counters, counter2: counters.counter2 - 1 });
+    searchContext.dispatch({ type: "decGuests" });
+  };
+
   return (
     <InputWrapper>
       <label>{label}</label>
       <ModalInput
         value={value}
         onFocus={onFocus}
-        onBlur={onBlur}
         onChange={onChange}
         readOnly={readOnly}
       />
@@ -45,6 +68,7 @@ const InputSearchBar = (props) => {
                     payload: `${stay.city} , ${stay.country}`,
                   })
                 }
+                onClick={onBlur}
               >
                 <MdLocationOn />
                 <p key={index}>{`${stay.city} , ${stay.country}`}</p>
@@ -55,8 +79,22 @@ const InputSearchBar = (props) => {
       )}
       {width > 640 && guestsFocus && (
         <ResultsContainer>
-          <PersonCounter label={"Ages 13 or above"}>Adults</PersonCounter>
-          <PersonCounter label={"Ages 2-12"}>Children</PersonCounter>
+          <PersonCounter
+            label={"Ages 13 or above"}
+            value={counters.counter1}
+            handleIncrement={handleIncrement1}
+            handleDecrement={handleDecrement1}
+          >
+            Adults
+          </PersonCounter>
+          <PersonCounter
+            label={"Ages 2-12"}
+            value={counters.counter2}
+            handleIncrement={handleIncrement2}
+            handleDecrement={handleDecrement2}
+          >
+            Children
+          </PersonCounter>
         </ResultsContainer>
       )}
     </InputWrapper>

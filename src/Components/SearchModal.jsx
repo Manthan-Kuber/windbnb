@@ -31,7 +31,6 @@ const SearchModal = () => {
         <ModalContentWrapper>
           <InputSearchBar
             locationFocus={focus.locationFocus}
-            setFocus={setFocus}
             label={"Location"}
             value={searchContext.location}
             onFocus={(prevState) =>
@@ -50,7 +49,6 @@ const SearchModal = () => {
           <InputSearchBar
             readOnly
             guestsFocus={focus.guestsFocus}
-            setFocus={setFocus}
             label={"Guests"}
             value={searchContext.guests}
             onFocus={(prevState) =>

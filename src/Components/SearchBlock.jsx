@@ -3,7 +3,11 @@ import { AiOutlineSearch } from "react-icons/ai";
 import SearchModal from "./SearchModal";
 import { SearchContainer, SearchInputs } from "./Header.styles";
 
-const initialState = { isModalOpen: false, location: "", guests: "" };
+const initialState = {
+  isModalOpen: false,
+  location: "",
+  guests: 0,
+};
 
 export const SearchContext = createContext(initialState);
 
@@ -13,9 +17,18 @@ const searchReducer = (state, action) => {
       return { ...state, isModalOpen: !state.isModalOpen };
     case "locationChangeHandler":
       return { ...state, location: action.payload };
-
     case "guestChangeHandler":
       return { ...state, guests: action.payload };
+    case "incGuests":
+      return {
+        ...state,
+        guests: state.guests + 1,
+      };
+    case "decGuests":
+      return {
+        ...state,
+        guests: state.guests !== 0 ? state.guests - 1 : state.guests,
+      };
     default:
       throw new Error();
   }

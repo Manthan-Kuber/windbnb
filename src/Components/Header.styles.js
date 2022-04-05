@@ -206,20 +206,36 @@ export const CounterWrapper = styled.div`
     color: lightgrey;
     text-transform: capitalize;
   }
+
+  div {
+    display: flex;
+    gap: 1rem;
+  }
 `;
 
 export const CounterInput = styled.input`
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
+  width: 10%;
+  text-align: center;
+  font:700 1.4rem "Mulish",sans-serif;
+  border: none;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const CounterButton = styled.button`
-  padding: 0.5rem;
-  width: 3rem;
+  width: 2.3rem;
   border: none;
-  color: white;
+  color: #828282;
+  background-color: white;
   font-size: 2rem;
-  background: var(--clr-primary);
-  border-radius:6px;
+  border:1px solid #828282;
+  border-radius: 6px;
+
+  &:hover{
+    cursor: pointer;
+  }
 `;
