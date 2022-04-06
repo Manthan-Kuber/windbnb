@@ -1,6 +1,7 @@
 import GlobalStyles from "./GlobalStyles";
 import styled from "styled-components";
 import Header from "./Components/Header";
+import MainContent from "./Components/MainContent";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <MainWrapper>
         <Header />
         <MainContainer>
-          
+          <MainContent/>
         </MainContainer>
       </MainWrapper>
       

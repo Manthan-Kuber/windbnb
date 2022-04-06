@@ -24,28 +24,6 @@ const InputSearchBar = (props) => {
   const { width } = useWindowDimensions();
   const [counters, setCounters] = useState({ counter1: 0, counter2: 0 });
 
-  const handleIncrement1 = () => {
-    setCounters({ ...counters, counter1: counters.counter1 + 1 });
-    searchContext.dispatch({ type: "incGuests" });
-  };
-
-  const handleDecrement1 = () => {
-    if(counters.counter1 === 0 ) return counters.counter1
-    setCounters({ ...counters, counter1: counters.counter1 - 1 });
-    searchContext.dispatch({ type: "decGuests" });
-  };
-
-  const handleIncrement2 = () => {
-    setCounters({ ...counters, counter2: counters.counter2 + 1 });
-    searchContext.dispatch({ type: "incGuests" });
-  };
-
-  const handleDecrement2 = () => {
-    if(counters.counter2 === 0 ) return counters.counter2
-    setCounters({ ...counters, counter2: counters.counter2 - 1 });
-    searchContext.dispatch({ type: "decGuests" });
-  };
-
   return (
     <InputWrapper>
       <label>{label}</label>
@@ -82,16 +60,30 @@ const InputSearchBar = (props) => {
           <PersonCounter
             label={"Ages 13 or above"}
             value={counters.counter1}
-            handleIncrement={handleIncrement1}
-            handleDecrement={handleDecrement1}
+            handleIncrement={() => {
+              setCounters({ ...counters, counter1: counters.counter1 + 1 });
+              searchContext.dispatch({ type: "incGuests" });
+            }}
+            handleDecrement={() => {
+              if (counters.counter1 === 0) return counters.counter1;
+              setCounters({ ...counters, counter1: counters.counter1 - 1 });
+              searchContext.dispatch({ type: "decGuests" });
+            }}
           >
             Adults
           </PersonCounter>
           <PersonCounter
             label={"Ages 2-12"}
             value={counters.counter2}
-            handleIncrement={handleIncrement2}
-            handleDecrement={handleDecrement2}
+            handleIncrement={() => {
+              setCounters({ ...counters, counter2: counters.counter2 + 1 });
+              searchContext.dispatch({ type: "incGuests" });
+            }}
+            handleDecrement={() => {
+              if (counters.counter2 === 0) return counters.counter2;
+              setCounters({ ...counters, counter2: counters.counter2 - 1 });
+              searchContext.dispatch({ type: "decGuests" });
+            }}
           >
             Children
           </PersonCounter>
