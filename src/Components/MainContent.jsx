@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import StaysData from "../stays.json";
 import { FaStar } from "react-icons/fa";
+import { SearchContext } from "./SearchBlock";
 
 const MainContent = () => {
+  const searchContext = useContext(SearchContext);
+  const SearchWord = (
+    searchContext.location + JSON.stringify(SearchContext.guests)
+  )
+    .replace(/,/g, "")
+    .replace(/\s/g, "")
+    .toLowerCase();
   return (
     <>
       <TitleContainer>
@@ -11,14 +19,17 @@ const MainContent = () => {
         <h5>{StaysData.length}+ Stays</h5>
       </TitleContainer>
       <CardsContainer>
-        {StaysData.map((stay, index) => (
-          <Card>
+        {StaysData.filter((stay) => {
+          if(searchContext.location.includes(stay.city)) return stay
+          else return stay
+        }).map((stay, index) => (
+          <Card key={index}>
             <img src={stay.photo} alt={`Card no. ${index}`} />
             <InfoContainer>
               <HostWrapper>
                 {stay.superHost && <h2>Super Host</h2>}
                 <p>
-                  {stay.type} .{stay.beds} beds
+                  {stay.type} . {stay.beds} beds
                 </p>
               </HostWrapper>
               <RatingWrapper>
@@ -54,6 +65,7 @@ const TitleContainer = styled.div`
 
 const CardsContainer = styled.div`
   display: grid;
+  justify-items: center;
   grid-row-gap: 3.2rem;
   @media (min-width: 80em) {
     display: grid;
@@ -64,10 +76,14 @@ const CardsContainer = styled.div`
 `;
 
 const Card = styled.article`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   max-width: 60rem;
   max-height: 60rem;
+  margin-inline: auto; */
+  display: grid;
+  grid-template-rows: minmax(auto,30rem);
+  grid-template-columns: minmax(auto,50rem);
   margin-inline: auto;
   img {
     width: 100%;
@@ -78,7 +94,8 @@ const Card = styled.article`
   @media (min-width: 80em) {
     display: grid;
     grid-template-rows: 30rem;
-    max-width: revert;
+    grid-template-columns: revert;
+    max-width: 60rem;
     max-height: revert;
     margin-inline: revert;
   }

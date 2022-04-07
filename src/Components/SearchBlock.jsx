@@ -7,6 +7,7 @@ const initialState = {
   isModalOpen: false,
   location: "",
   guests: 0,
+  searchTerm: "",
 };
 
 export const SearchContext = createContext(initialState);
@@ -29,6 +30,8 @@ const searchReducer = (state, action) => {
         ...state,
         guests: state.guests !== 0 ? state.guests - 1 : state.guests,
       };
+    case "setSearchTerm":
+      return { ...state, searchTerm: action.payload };
     default:
       throw new Error();
   }

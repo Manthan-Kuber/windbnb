@@ -64,7 +64,22 @@ const SearchModal = () => {
               })
             }
           />
-          <ButtonContainer>
+          <ButtonContainer
+            onClick={() => {
+              searchContext.dispatch({
+                type: "setSearchTerm",
+                payload: (
+                  JSON.stringify(searchContext.location) +
+                  JSON.stringify(searchContext.guests)
+                )
+                  .replace(/\s/g, "")
+                  .replace(/,/g, "")
+                  .toLowerCase(),
+              });
+              searchContext.dispatch({ type: "toggleModal" });
+              alert(searchContext.searchTerm); //Remove later
+            }}
+          >
             <AiOutlineSearch size="16px" />
             <p>Search</p>
           </ButtonContainer>
