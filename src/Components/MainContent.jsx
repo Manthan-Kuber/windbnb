@@ -2,16 +2,16 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import StaysData from "../stays.json";
 import { FaStar } from "react-icons/fa";
-import { SearchContext } from "./SearchBlock";
+import { SearchContext } from "../App";
 
 const MainContent = () => {
   const searchContext = useContext(SearchContext);
-  const SearchWord = (
-    searchContext.location + JSON.stringify(SearchContext.guests)
-  )
-    .replace(/,/g, "")
-    .replace(/\s/g, "")
-    .toLowerCase();
+  // const SearchWord = (
+  //   searchContext.location + JSON.stringify(SearchContext.guests)
+  // )
+  //   .replace(/,/g, "")
+  //   .replace(/\s/g, "")
+  //   .toLowerCase();
   return (
     <>
       <TitleContainer>
@@ -20,8 +20,8 @@ const MainContent = () => {
       </TitleContainer>
       <CardsContainer>
         {StaysData.filter((stay) => {
-          if(searchContext.location.includes(stay.city)) return stay
-          else return stay
+          if (searchContext.location.includes(stay.city)) return stay;
+          else return stay;
         }).map((stay, index) => (
           <Card key={index}>
             <img src={stay.photo} alt={`Card no. ${index}`} />
@@ -82,8 +82,8 @@ const Card = styled.article`
   max-height: 60rem;
   margin-inline: auto; */
   display: grid;
-  grid-template-rows: minmax(auto,30rem);
-  grid-template-columns: minmax(auto,50rem);
+  grid-template-rows: minmax(auto, 30rem);
+  grid-template-columns: minmax(auto, 50rem);
   margin-inline: auto;
   img {
     width: 100%;

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ResultRow } from "./Header.styles";
-import { SearchContext } from "./SearchBlock";
+import { SearchContext } from "../App";
 import { MdLocationOn } from "react-icons/md";
 
 const LocationDropdownRow = (props) => {

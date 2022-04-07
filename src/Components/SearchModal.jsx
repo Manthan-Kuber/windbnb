@@ -8,7 +8,7 @@ import {
 } from "./Header.styles";
 import { GrClose } from "react-icons/gr";
 import { AiOutlineSearch } from "react-icons/ai";
-import { SearchContext } from "./SearchBlock";
+import { SearchContext } from "../App";
 import InputSearchBar from "./InputSearchBar";
 import { ResultsContainer } from "./Header.styles";
 import LocationDropdownRow from "./LocationDropdownRow";
