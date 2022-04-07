@@ -168,12 +168,13 @@ export const ModalContentWrapper = styled.div`
 `;
 
 export const ResultsContainer = styled.div`
+
   position: absolute;
   left: 0;
-  top: calc(100% + 0.5rem);
+  top: calc(100% - 2.3rem);
   background: white;
   height: 200px;
-  width: 250px;
+  width: 100%;
   overflow: hidden;
   overflow-y: auto;
   scrollbar-width: none;
@@ -186,11 +187,16 @@ export const ResultsContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  @media (min-width: 40em) {
+    top: calc(100% + 0.5rem);
+    width: 250px;
+  }
 `;
 
 export const ResultRow = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.2rem;
   width: 100%;
   padding: 1rem;
@@ -198,9 +204,15 @@ export const ResultRow = styled.div`
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.2);
   }
+  @media (min-width: 40em) {
+    justify-content: revert;
+  }
 `;
 
 export const CounterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   label {
     font: 400 1.4rem "Mulish", sans-serif;
     color: lightgrey;
@@ -209,7 +221,16 @@ export const CounterWrapper = styled.div`
 
   div {
     display: flex;
+    justify-content: center;
     gap: 1rem;
+  }
+
+  @media (min-width:40em){
+    display: revert;
+    
+    div{
+      justify-content: revert;
+    }
   }
 `;
 
@@ -219,7 +240,7 @@ export const CounterInput = styled.input`
   appearance: textfield;
   width: 10%;
   text-align: center;
-  font:700 1.4rem "Mulish",sans-serif;
+  font: 700 1.4rem "Mulish", sans-serif;
   border: none;
   &:focus {
     outline: none;
@@ -232,10 +253,10 @@ export const CounterButton = styled.button`
   color: #828282;
   background-color: white;
   font-size: 2rem;
-  border:1px solid #828282;
+  border: 1px solid #828282;
   border-radius: 6px;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 `;

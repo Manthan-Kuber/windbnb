@@ -1,10 +1,10 @@
 import React from "react";
 import { ModalInput, InputWrapper } from "./Header.styles";
 import { ResultsContainer } from "./Header.styles";
-import Data from "../stays.json";
 import useWindowDimensions from "../Hooks/useWindowDimensions";
 import LocationDropdownRow from "./LocationDropdownRow";
 import GuestsDropdown from "./GuestsDropdown";
+import Data from "../stays.json";
 
 let StaysData = [...new Map(Data.map((stay) => [stay["city"], stay])).values()];
 
@@ -31,16 +31,16 @@ const InputSearchBar = (props) => {
         readOnly={readOnly}
       />
 
+      {width > 640 && guestsFocus && <GuestsDropdown />}
       {width > 640 && locationFocus && (
         <ResultsContainer>
           {StaysData.map((stay, index) => {
             return (
-              <LocationDropdownRow stay={stay} index={index} onBlur={onBlur} />
+              <LocationDropdownRow key={index} stay={stay} index={index} onBlur={onBlur} />
             );
           })}
         </ResultsContainer>
       )}
-      {width > 640 && guestsFocus && <GuestsDropdown />}
     </InputWrapper>
   );
 };

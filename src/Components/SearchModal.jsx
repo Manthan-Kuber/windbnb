@@ -10,12 +10,20 @@ import { GrClose } from "react-icons/gr";
 import { AiOutlineSearch } from "react-icons/ai";
 import { SearchContext } from "./SearchBlock";
 import InputSearchBar from "./InputSearchBar";
+import { ResultsContainer } from "./Header.styles";
+import LocationDropdownRow from "./LocationDropdownRow";
+import useWindowDimensions from "../Hooks/useWindowDimensions";
+import Data from "../stays.json";
+import GuestsDropdown from "./GuestsDropdown";
+
+let StaysData = [...new Map(Data.map((stay) => [stay["city"], stay])).values()];
 
 const SearchModal = () => {
   const [focus, setFocus] = useState({
     locationFocus: false,
     guestsFocus: false,
   });
+  const { width } = useWindowDimensions();
   const searchContext = useContext(SearchContext);
   return ReactDOM.createPortal(
     <ModalOverlay>
@@ -46,6 +54,7 @@ const SearchModal = () => {
               })
             }
           />
+         
           <InputSearchBar
             readOnly
             guestsFocus={focus.guestsFocus}
@@ -83,6 +92,23 @@ const SearchModal = () => {
             <AiOutlineSearch size="16px" />
             <p>Search</p>
           </ButtonContainer>
+          {width < 640 && focus.locationFocus && (
+            <ResultsContainer>
+              {StaysData.map((stay, index) => {
+                return (
+                  <LocationDropdownRow
+                    key={index}
+                    stay={stay}
+                    index={index}
+                    onBlur={(prevState) =>
+                      setFocus({ ...prevState, locationFocus: false })
+                    }
+                  />
+                );
+              })}
+            </ResultsContainer>
+          )}
+          {width < 640 && focus.guestsFocus && <GuestsDropdown />}
         </ModalContentWrapper>
       </ModalWrapper>
     </ModalOverlay>,
