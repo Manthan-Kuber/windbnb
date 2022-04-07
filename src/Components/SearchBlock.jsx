@@ -8,13 +8,19 @@ const SearchBlock = () => {
   const searchContext = useContext(SearchContext);
   return (
     <>
-      <SearchContainer onClick={() => searchContext.dispatch({ type: "toggleModal" })}>
+      <SearchContainer
+        onClick={() => searchContext.dispatch({ type: "toggleModal" })}
+      >
         <SearchInputs
           placeholder="Add Location"
           readOnly
           value={searchContext.location}
         />
-        <SearchInputs placeholder="Add Guests" readOnly value={searchContext.guests} />
+        <SearchInputs
+          placeholder="Add Guests"
+          readOnly
+          value={searchContext.guests === 0 ? "" : searchContext.guests}
+        />
         <AiOutlineSearch
           className="search-icon"
           color="var(--clr-primary)"

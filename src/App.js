@@ -7,8 +7,8 @@ import { createContext, useReducer } from "react";
 const initialState = {
   isModalOpen: false,
   location: "",
-  guests: 0,
   searchTerm: "",
+  guests: 0,
   counter1: 0,
   counter2: 0,
 };
@@ -36,19 +36,23 @@ const searchReducer = (state, action) => {
     case "setSearchTerm":
       return { ...state, searchTerm: action.payload };
     case "incCounter1":
-      return { ...state, counter1: state.counter1 + action.payload };
+      return { ...state, counter1: state.counter1 + 1 };
     case "incCounter2":
-      return { ...state, counter2: state.counter2 + action.payload };
+      return { ...state, counter2: state.counter2 + 1 };
     case "decCounter1":
       return {
         ...state,
-        counter1: state.counter1 === 0 && state.counter1 - action.payload,
+        counter1: state.counter1 !== 0 ? state.counter1 - 1 : state.counter1,
       };
     case "decCounter2":
       return {
         ...state,
-        counter2: state.counter2 === 0 && state.counter2 - action.payload,
+        counter2: state.counter2 !== 0 ? state.counter2 - 1 : state.counter2,
       };
+    case "handleCounter1Change":
+      return { ...state, counter1: action.payload };
+    case "handleCounter2Change":
+      return { ...state, counter2: action.payload };
     default:
       throw new Error();
   }

@@ -53,13 +53,14 @@ const SearchModal = () => {
                 payload: event.target.value,
               })
             }
+            placeholder={"Add Location"}
           />
          
           <InputSearchBar
             readOnly
             guestsFocus={focus.guestsFocus}
             label={"Guests"}
-            value={searchContext.guests}
+            value={searchContext.guests === 0 ? "" : searchContext.guests}
             onFocus={(prevState) =>
               setFocus({ ...prevState, guestsFocus: true })
             }
@@ -72,6 +73,7 @@ const SearchModal = () => {
                 payload: event.target.value,
               })
             }
+            placeholder={"Add Guests"}
           />
           <ButtonContainer
             onClick={() => {

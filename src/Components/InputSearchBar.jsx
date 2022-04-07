@@ -18,6 +18,7 @@ const InputSearchBar = (props) => {
     locationFocus,
     guestsFocus,
     readOnly,
+    placeholder
   } = props;
   const { width } = useWindowDimensions();
 
@@ -29,6 +30,7 @@ const InputSearchBar = (props) => {
         onFocus={onFocus}
         onChange={onChange}
         readOnly={readOnly}
+        placeholder={placeholder}
       />
 
       {width > 640 && guestsFocus && <GuestsDropdown />}

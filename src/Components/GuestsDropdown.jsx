@@ -9,28 +9,42 @@ const GuestsDropdown = () => {
     <ResultsContainer>
       <PersonCounter
         label={"Ages 13 or above"}
-        value={searchContext.counter1}
+        name={"adultNumber"}
+        counterValue={searchContext.counter1}
         handleIncrement={() => {
-          SearchContext.dispatch({ type: "incCounter1", payload: 1 });
+          searchContext.dispatch({ type: "incCounter1" });
           searchContext.dispatch({ type: "incGuests" });
         }}
         handleDecrement={() => {
-          SearchContext.dispatch({ type: "decCounter1", payload: 1 });
+          searchContext.dispatch({ type: "decCounter1" });
           searchContext.dispatch({ type: "decGuests" });
+        }}
+        onChange={(event) => {
+          searchContext.dispatch({
+            type: "handleCounter1Change",
+            payload: event.target.value,
+          });
         }}
       >
         Adults
       </PersonCounter>
       <PersonCounter
         label={"Ages 2-12"}
-        value={searchContext.counter2}
+        name={"childrenNumber"}
+        counterValue={searchContext.counter2}
         handleIncrement={() => {
-          SearchContext.dispatch({ type: "incCounter2", payload: 1 });
+          searchContext.dispatch({ type: "incCounter2" });
           searchContext.dispatch({ type: "incGuests" });
         }}
         handleDecrement={() => {
-          SearchContext.dispatch({ type: "decCounter2", payload: 1 });
+          searchContext.dispatch({ type: "decCounter2" });
           searchContext.dispatch({ type: "decGuests" });
+        }}
+        onChange={(event) => {
+          searchContext.dispatch({
+            type: "handleCounter2Change",
+            payload: event.target.value,
+          });
         }}
       >
         Children
