@@ -1,9 +1,7 @@
-import React, { useContext } from "react";
-import { SearchContext } from "../App";
+import React from "react";
 import { CounterButton, CounterInput, CounterWrapper } from "./Header.styles";
 
 const PersonCounter = (props) => {
-  const searchContext = useContext(SearchContext)
   return (
     <CounterWrapper>
       <h4>{props.children}</h4>

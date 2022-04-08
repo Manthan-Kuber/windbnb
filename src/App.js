@@ -64,9 +64,9 @@ function App() {
           isModalOpen: state.isModalOpen,
           location: state.location,
           guests: state.guests,
-          searchTerm:state.searchTerm,
-          counter1:state.counter1,
-          counter2:state.counter2,
+          searchTerm: state.searchTerm,
+          counter1: state.counter1,
+          counter2: state.counter2,
           dispatch: dispatch,
         }}
       >
@@ -76,6 +76,14 @@ function App() {
             <MainContent />
           </MainContainer>
         </MainWrapper>
+          <Footer>
+            <FooterText>
+              Created by{" "}
+              <b>
+                <u>Manthan Kuber</u>
+              </b>
+            </FooterText>
+          </Footer>
       </SearchContext.Provider>
     </>
   );
@@ -99,4 +107,15 @@ const MainContainer = styled.main`
   @media (min-width: 40em) {
     margin-top: 7rem;
   }
+`;
+
+const Footer = styled.footer`
+  margin-top: auto;
+  margin-bottom: 2.4rem;
+`;
+
+const FooterText = styled.p`
+  font: 1.4rem "Montserrat", sans-serif;
+  color: #bdbdbd;
+  text-align: center;
 `;
