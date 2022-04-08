@@ -1,12 +1,13 @@
 import React from "react";
 import SearchBlock from "./SearchBlock";
-import { HeaderContainer,LogoContainer } from "./Header.styles";
+import { HeaderContainer, LogoContainer } from "./Header.styles";
+import WindbnbLogo from "./WindbnbLogo";
 
 const Header = () => {
   return (
     <HeaderContainer>
       <LogoContainer>
-        <img src="/images/logo.png" alt="logo" />
+        <WindbnbLogo />
       </LogoContainer>
       <SearchBlock />
     </HeaderContainer>
@@ -14,5 +15,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
