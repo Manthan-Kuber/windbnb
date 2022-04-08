@@ -6,17 +6,25 @@ import { SearchContext } from "../App";
 
 const MainContent = () => {
   const searchContext = useContext(SearchContext);
+
+  const filterLogic = StaysData.filter((stay) => {
+    if (
+      searchContext.searchTerm.includes(stay.city.toLowerCase()) &&
+      searchContext.searchTerm.charAt(-1) <= stay.maxGuests
+    ) {
+      return stay;
+    }
+    if (searchContext.searchTerm.includes(0) || searchContext.searchTerm === "")
+      return stay;
+  });
   return (
     <>
       <TitleContainer>
         <h1>Stays in Finland</h1>
-        <h5>{StaysData.length}+ Stays</h5>
+        <h5>{filterLogic.length}+ Stays</h5>
       </TitleContainer>
       <CardsContainer>
-        {StaysData.filter((stay) => {
-          if (searchContext.location.includes(stay.city)) return stay;
-          else return stay;
-        }).map((stay, index) => (
+        {filterLogic.map((stay, index) => (
           <Card key={index}>
             <img src={stay.photo} alt={`Card no. ${index}`} />
             <InfoContainer>
