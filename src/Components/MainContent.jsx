@@ -8,15 +8,16 @@ const MainContent = () => {
   const searchContext = useContext(SearchContext);
 
   const filterLogic = StaysData.filter((stay) => {
-    if (
+    if (searchContext.searchTerm === "") return stay;
+    if (searchContext.searchTerm <= stay.maxGuests) return stay;
+    else if (
       searchContext.searchTerm.includes(stay.city.toLowerCase()) &&
-      searchContext.searchTerm.charAt(-1) <= stay.maxGuests
+      searchContext.searchTerm.slice(-1) <= stay.maxGuests
     ) {
       return stay;
     }
-    if (searchContext.searchTerm.includes(0) || searchContext.searchTerm === "")
-      return stay;
   });
+
   return (
     <>
       <TitleContainer>
