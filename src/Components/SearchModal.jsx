@@ -89,8 +89,6 @@ const SearchModal = () => {
               searchContext.dispatch({ type: "toggleModal" });
             }}
           >
-            {/* Remove below clg */}
-            {console.log(`Search term: ${searchContext.searchTerm}`)} 
             <AiOutlineSearch size="16px" />
             <p>Search</p>
           </ButtonContainer>
