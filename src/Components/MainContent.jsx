@@ -6,12 +6,6 @@ import { SearchContext } from "../App";
 
 const MainContent = () => {
   const searchContext = useContext(SearchContext);
-  // const SearchWord = (
-  //   searchContext.location + JSON.stringify(SearchContext.guests)
-  // )
-  //   .replace(/,/g, "")
-  //   .replace(/\s/g, "")
-  //   .toLowerCase();
   return (
     <>
       <TitleContainer>

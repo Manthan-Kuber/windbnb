@@ -55,7 +55,7 @@ const SearchModal = () => {
             }
             placeholder={"Add Location"}
           />
-         
+
           <InputSearchBar
             readOnly
             guestsFocus={focus.guestsFocus}
@@ -80,17 +80,17 @@ const SearchModal = () => {
               searchContext.dispatch({
                 type: "setSearchTerm",
                 payload: (
-                  JSON.stringify(searchContext.location) +
-                  JSON.stringify(searchContext.guests)
+                  searchContext.location + searchContext.guests
                 )
-                  .replace(/\s/g, "")
                   .replace(/,/g, "")
+                  .replace(/\s/g, "")
                   .toLowerCase(),
               });
               searchContext.dispatch({ type: "toggleModal" });
-              alert(searchContext.searchTerm); //Remove later
             }}
           >
+            {/* Remove below clg */}
+            {console.log(`Search term: ${searchContext.searchTerm}`)} 
             <AiOutlineSearch size="16px" />
             <p>Search</p>
           </ButtonContainer>

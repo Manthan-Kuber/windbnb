@@ -14,12 +14,10 @@ const GuestsDropdown = () => {
         handleIncrement={() => {
           searchContext.dispatch({ type: "incCounter1" });
           searchContext.dispatch({ type: "incGuests" });
-          console.log("Counter1: " + searchContext.counter1)
         }}
         handleDecrement={() => {
           searchContext.dispatch({ type: "decCounter1" });
           searchContext.dispatch({ type: "decGuests" });
-          
         }}
         onChange={(event) => {
           searchContext.dispatch({
@@ -37,7 +35,6 @@ const GuestsDropdown = () => {
         handleIncrement={() => {
           searchContext.dispatch({ type: "incCounter2" });
           searchContext.dispatch({ type: "incGuests" });
-          console.log("Counter2: " + searchContext.counter2)
         }}
         handleDecrement={() => {
           searchContext.dispatch({ type: "decCounter2" });
