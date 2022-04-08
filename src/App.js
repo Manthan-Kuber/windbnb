@@ -49,10 +49,6 @@ const searchReducer = (state, action) => {
         ...state,
         counter2: state.counter2 !== 0 ? state.counter2 - 1 : state.counter2,
       };
-    case "handleCounter1Change":
-      return { ...state, counter1: action.payload };
-    case "handleCounter2Change":
-      return { ...state, counter2: action.payload };
     default:
       throw new Error();
   }
@@ -68,6 +64,9 @@ function App() {
           isModalOpen: state.isModalOpen,
           location: state.location,
           guests: state.guests,
+          searchTerm:state.searchTerm,
+          counter1:state.counter1,
+          counter2:state.counter2,
           dispatch: dispatch,
         }}
       >

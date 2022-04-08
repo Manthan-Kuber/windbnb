@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { SearchContext } from "../App";
 import { CounterButton, CounterInput, CounterWrapper } from "./Header.styles";
 
 const PersonCounter = (props) => {
+  const searchContext = useContext(SearchContext)
   return (
     <CounterWrapper>
       <h4>{props.children}</h4>
@@ -9,12 +11,10 @@ const PersonCounter = (props) => {
       <div>
         <CounterButton onClick={props.handleIncrement}>+</CounterButton>
         <CounterInput
-          type="text"
+          type="number"
           name={props.name}
           readOnly
-          value={props.counterValue}
-          placeholder={props.placeholder}
-          onChange={props.onChange}
+          value={props.value}
         />
         <CounterButton onClick={props.handleDecrement}>-</CounterButton>
       </div>

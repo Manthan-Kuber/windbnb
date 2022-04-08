@@ -10,14 +10,16 @@ const GuestsDropdown = () => {
       <PersonCounter
         label={"Ages 13 or above"}
         name={"adultNumber"}
-        counterValue={searchContext.counter1}
+        value={searchContext.counter1}
         handleIncrement={() => {
           searchContext.dispatch({ type: "incCounter1" });
           searchContext.dispatch({ type: "incGuests" });
+          console.log("Counter1: " + searchContext.counter1)
         }}
         handleDecrement={() => {
           searchContext.dispatch({ type: "decCounter1" });
           searchContext.dispatch({ type: "decGuests" });
+          
         }}
         onChange={(event) => {
           searchContext.dispatch({
@@ -31,10 +33,11 @@ const GuestsDropdown = () => {
       <PersonCounter
         label={"Ages 2-12"}
         name={"childrenNumber"}
-        counterValue={searchContext.counter2}
+        value={searchContext.counter2}
         handleIncrement={() => {
           searchContext.dispatch({ type: "incCounter2" });
           searchContext.dispatch({ type: "incGuests" });
+          console.log("Counter2: " + searchContext.counter2)
         }}
         handleDecrement={() => {
           searchContext.dispatch({ type: "decCounter2" });
