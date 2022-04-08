@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/windbnb/static/js/main.e25de461.js",
+    "static/js/787.2072273d.chunk.js": "/windbnb/static/js/787.2072273d.chunk.js",
+    "index.html": "/windbnb/index.html",
+    "main.e25de461.js.map": "/windbnb/static/js/main.e25de461.js.map",
+    "787.2072273d.chunk.js.map": "/windbnb/static/js/787.2072273d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.e25de461.js"
+  ]
+}
