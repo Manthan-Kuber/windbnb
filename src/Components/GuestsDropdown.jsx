@@ -12,8 +12,10 @@ const GuestsDropdown = () => {
         name={"adultNumber"}
         value={searchContext.counter1}
         handleIncrement={() => {
-          searchContext.dispatch({ type: "incCounter1" });
-          searchContext.dispatch({ type: "incGuests" });
+          if (searchContext.guests < 9) {
+            searchContext.dispatch({ type: "incCounter1" });
+            searchContext.dispatch({ type: "incGuests" });
+          }
         }}
         handleDecrement={() => {
           searchContext.dispatch({ type: "decCounter1" });
@@ -34,8 +36,10 @@ const GuestsDropdown = () => {
         name={"childrenNumber"}
         value={searchContext.counter2}
         handleIncrement={() => {
-          searchContext.dispatch({ type: "incCounter2" });
-          searchContext.dispatch({ type: "incGuests" });
+          if (searchContext.guests < 9) {
+            searchContext.dispatch({ type: "incCounter2" });
+            searchContext.dispatch({ type: "incGuests" });
+          }
         }}
         handleDecrement={() => {
           searchContext.dispatch({ type: "decCounter2" });
