@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import StaysData from "../stays.json";
 import { FaStar } from "react-icons/fa";
+import {VscSearchStop} from 'react-icons/vsc'
 import { SearchContext } from "../App";
 
 const MainContent = () => {
@@ -16,7 +17,7 @@ const MainContent = () => {
     ) {
       return stay;
     }
-    return false
+    return false;
   });
 
   return (
@@ -25,26 +26,33 @@ const MainContent = () => {
         <h1>Stays in Finland</h1>
         <h5>{filterLogic.length}+ Stays</h5>
       </TitleContainer>
-      <CardsContainer>
-        {filterLogic.map((stay, index) => (
-          <Card key={index}>
-            <img src={stay.photo} alt={`Card no. ${index}`} />
-            <InfoContainer>
-              <HostWrapper>
-                {stay.superHost && <h2>Super Host</h2>}
-                <p>
-                  {stay.type} . {stay.beds} beds
-                </p>
-              </HostWrapper>
-              <RatingWrapper>
-                <FaStar className="star-icon" />
-                <p>{stay.rating}</p>
-              </RatingWrapper>
-            </InfoContainer>
-            <Title>{stay.title}</Title>
-          </Card>
-        ))}
-      </CardsContainer>
+      {filterLogic.length ? (
+        <CardsContainer>
+          {filterLogic.map((stay, index) => (
+            <Card key={index}>
+              <img src={stay.photo} alt={`Card no. ${index}`} />
+              <InfoContainer>
+                <HostWrapper>
+                  {stay.superHost && <h2>Super Host</h2>}
+                  <p>
+                    {stay.type} . {stay.beds} beds
+                  </p>
+                </HostWrapper>
+                <RatingWrapper>
+                  <FaStar className="star-icon" />
+                  <p>{stay.rating}</p>
+                </RatingWrapper>
+              </InfoContainer>
+              <Title>{stay.title}</Title>
+            </Card>
+          ))}
+        </CardsContainer>
+      ) : (
+        <NotFoundWrapper>
+          <VscSearchStop className="icon"/>
+          <h1>No Search Results Were Found For The Search!</h1>
+        </NotFoundWrapper>
+      )}
     </>
   );
 };
@@ -67,6 +75,31 @@ const TitleContainer = styled.div`
   }
 `;
 
+const NotFoundWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%,-50%);
+  width: min(100%,50ch);
+  line-height: 3rem;
+  font: 700 clamp(1.8rem, 2vw + 0.5rem, 2.4rem) "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    color: #333;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+
+  .icon{
+    font: 700 8rem "Montserrat", sans-serif;
+    color: var(--clr-primary);
+  }
+`;
+
 const CardsContainer = styled.div`
   display: grid;
   justify-items: center;
@@ -80,11 +113,6 @@ const CardsContainer = styled.div`
 `;
 
 const Card = styled.article`
-  /* display: flex;
-  flex-direction: column;
-  max-width: 60rem;
-  max-height: 60rem;
-  margin-inline: auto; */
   display: grid;
   grid-template-rows: minmax(auto, 30rem);
   grid-template-columns: minmax(auto, 50rem);
