@@ -16,6 +16,7 @@ const MainContent = () => {
     ) {
       return stay;
     }
+    return false
   });
 
   return (

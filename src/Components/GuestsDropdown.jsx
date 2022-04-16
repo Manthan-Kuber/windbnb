@@ -17,7 +17,8 @@ const GuestsDropdown = () => {
         }}
         handleDecrement={() => {
           searchContext.dispatch({ type: "decCounter1" });
-          searchContext.dispatch({ type: "decGuests" });
+          searchContext.counter1 !== 0 &&
+            searchContext.dispatch({ type: "decGuests" });
         }}
         onChange={(event) => {
           searchContext.dispatch({
@@ -38,7 +39,8 @@ const GuestsDropdown = () => {
         }}
         handleDecrement={() => {
           searchContext.dispatch({ type: "decCounter2" });
-          searchContext.dispatch({ type: "decGuests" });
+          searchContext.counter2 !== 0 &&
+            searchContext.dispatch({ type: "decGuests" });
         }}
         onChange={(event) => {
           searchContext.dispatch({
