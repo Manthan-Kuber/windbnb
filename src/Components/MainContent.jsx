@@ -76,17 +76,13 @@ const TitleContainer = styled.div`
 `;
 
 const NotFoundWrapper = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%,-50%);
   width: min(100%,50ch);
   line-height: 3rem;
-  font: 700 clamp(1.8rem, 2vw + 0.5rem, 2.4rem) "Montserrat", sans-serif;
+  font: 700 clamp(1.6rem, 2vw + 0.5rem, 2.4rem) "Montserrat", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin:30% auto;
 
   h1 {
     color: #333;
