@@ -15,6 +15,7 @@ import LocationDropdownRow from "./LocationDropdownRow";
 import useWindowDimensions from "../Hooks/useWindowDimensions";
 import Data from "../stays.json";
 import GuestsDropdown from "./GuestsDropdown";
+import { motion } from "framer-motion";
 
 let StaysData = [...new Map(Data.map((stay) => [stay["city"], stay])).values()];
 
@@ -27,7 +28,14 @@ const SearchModal = () => {
   const searchContext = useContext(SearchContext);
   return ReactDOM.createPortal(
     <ModalOverlay>
-      <ModalWrapper>
+      <ModalWrapper
+        as={motion.div}
+        key="SearchModal"
+        initial={{ opacity: 0, y: "-100%" }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.25 }}
+        exit={{ opacity: 0, y: "-100%" }}
+      >
         <p>
           <b>Edit your search</b>
         </p>
@@ -79,9 +87,7 @@ const SearchModal = () => {
             onClick={() => {
               searchContext.dispatch({
                 type: "setSearchTerm",
-                payload: (
-                  searchContext.location + searchContext.guests
-                )
+                payload: (searchContext.location + searchContext.guests)
                   .replace(/,/g, "")
                   .replace(/\s/g, "")
                   .toLowerCase(),
